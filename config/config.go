@@ -16,7 +16,7 @@ func GetConfig() *viper.Viper {
 	c.AutomaticEnv()
 
 	c.SetDefault("debug", true)
-	c.SetDefault("appName", "v2board机器人")
+	c.SetDefault("appName", "INTERNETACC机器人")
 	c.SetDefault("traffic", 1024)
 	c.SetDefault("isAutoDeleteMsg", true)
 	c.SetDefault("telegram.admins", []interface{}{})

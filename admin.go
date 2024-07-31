@@ -20,7 +20,7 @@ func processAdminCommand(update *tgbotapi.Update) {
 	}
 	switch upmsg.Command() {
 	case "start", "help":
-		msg.Text = fmt.Sprintf("🤖V2board机器人\n\n当前会话id:`%v`\n\n你的账户id:`%v`", update.Message.Chat.ID, update.Message.From.ID)
+		msg.Text = fmt.Sprintf("🤖INTERACC机器人\n\n当前会话id:`%v`\n\n你的账户id:`%v`", update.Message.Chat.ID, update.Message.From.ID)
 		btn1 := tgbotapi.NewInlineKeyboardButtonData("🧰查看菜单", packBtnMsg(SHOW_MENU, SHOW_MENU))
 		row := tgbotapi.NewInlineKeyboardRow(btn1)
 		keyboard := tgbotapi.NewInlineKeyboardMarkup(row)

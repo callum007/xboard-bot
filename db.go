@@ -179,7 +179,7 @@ func checkinUser(tgId int64) VVBot {
 }
 func getIncomeStatistic() string {
 	if DB == nil {
-		return "未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	var r1 float32
 	var r2 float32
@@ -197,7 +197,7 @@ func getIncomeStatistic() string {
 }
 func getDayTrafficStatistic(page int) string {
 	if DB == nil {
-		return "未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	var users []User
 	sql := fmt.Sprintf("select t.email,u.u,u.d,t.transfer_enable from v2_stat_user  u left join v2_user t on u.user_id =t.id where to_days(FROM_UNIXTIME(u.created_at)) = to_days(now()) and u.record_type ='d' group by t.email order by (u.u+u.d) desc limit %v,10", (page * 10))
@@ -224,7 +224,7 @@ func getDayTrafficStatistic(page int) string {
 }
 func getInviteStatistic(page int) string {
 	if DB == nil {
-		return "未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	var invites []Invite
 	sql := fmt.Sprintf("select uu.email,count(1)as num,uu.id from v2_user u left join v2_user uu on u.invite_user_id = uu.id where u.invite_user_id is not null group by uu.id order by num desc limit %v,10", (page * 10))
@@ -246,7 +246,7 @@ func getInviteStatistic(page int) string {
 }
 func getPlanStatistic(page int) string {
 	if DB == nil {
-		return "未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	type PlanS struct{
 		Name string
@@ -274,7 +274,7 @@ func getPlanStatistic(page int) string {
 }
 func getMonthTrafficStatistic(page int) string {
 	if DB == nil {
-		return "未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	var users []User
 	sql := fmt.Sprintf("select t.email,sum(u.u)as u,sum(u.d)as d,sum(t.transfer_enable)as transfer_enable from v2_stat_user  u left join v2_user t on u.user_id =t.id where MONTH( FROM_UNIXTIME(u.created_at))=MONTH(now()) and u.record_type ='d'  group by t.email order by (sum(u.u)+sum(u.d)) desc limit %v,10", (page * 10))
@@ -301,7 +301,7 @@ func getMonthTrafficStatistic(page int) string {
 }
 func getIncrementStatistic() string {
 	if DB == nil {
-		return "⚙️未正确配置数据库信息!\n无法使用V2boadr查询功能"
+		return "⚙️未正确配置数据库信息!\n无法使用xboadr查询功能"
 	}
 	type Inc struct {
 		Category string

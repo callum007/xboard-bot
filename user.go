@@ -218,7 +218,7 @@ func s_bind(update tgbotapi.Update) {
 	}
 
 	if b.TelegramId != uint(update.Message.Chat.ID) {
-		mm.Text = "❌账户绑定失败,请稍后再试"
+		mm.Text = "❌账户绑定失败,请稍后再试,请联系管理员!"
 		mm.ReplyMarkup = getBackKeyboard()
 		_, _ = sendMessage(mm)
 		return
@@ -240,7 +240,7 @@ func s_unbind(update tgbotapi.Update) {
 		return
 	}
 	if user.TelegramId > 0 {
-		mm.Text = "❌账户解绑失败,请稍后再试..."
+		mm.Text = "❌账户解绑失败,请稍后再试...,请联系管理员!"
 		mm.ReplyMarkup = getBackKeyboard()
 		_, _ = sendEditMessage(mm)
 		return
@@ -368,8 +368,8 @@ func s_start(update tgbotapi.Update, isBack bool) {
 	grow := tgbotapi.NewInlineKeyboardRow(btn1, btn2)
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(row1, row2, row3)
 	gk := tgbotapi.NewInlineKeyboardMarkup(grow)
-	prvTxt := fmt.Sprintf("🤖V2board机器人\n\n欢迎使用%v,您可通过向此bot发送消息,客服将会收到您的反馈并通过此回复。", config.GetString("appName"))
-	grpTxt := fmt.Sprintf("🤖V2board机器人\n\n欢迎使用%v", config.GetString("appName"))
+	prvTxt := fmt.Sprintf("🤖INTERNETACC机器人\n\n欢迎使用%v,您可通过向此bot发送消息,客服将会收到您的反馈并通过此回复。", config.GetString("appName"))
+	grpTxt := fmt.Sprintf("🤖INTERNETACC机器人\n\n欢迎使用%v", config.GetString("appName"))
 	if isBack {
 		msg := tgbotapi.NewEditMessageTextAndMarkup(update.CallbackQuery.Message.Chat.ID, update.CallbackQuery.Message.MessageID, "", keyboard)
 		if update.FromChat().IsPrivate() {

@@ -11,7 +11,7 @@ import (
 func GetConfig() *viper.Viper {
 	c := viper.New()
 	c.SetConfigType("yaml")
-	c.SetConfigName("v2board")
+	c.SetConfigName("xboard")
 	c.AddConfigPath(".")
 	c.AutomaticEnv()
 

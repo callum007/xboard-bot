@@ -325,17 +325,18 @@ func getIncrementStatistic() string {
 func getInviteList(telegramId int64)[]Invite{
 	var invites []Invite
 	sql := fmt.Sprintf(`
-	select count(1)as num,invite_user_id from (WITH RECURSIVE cte AS (
-		SELECT id, invite_user_id, telegram_id,email
-		FROM v2_user
-		WHERE telegram_id=%v  -- 找到根节点
-		UNION ALL
-		SELECT u.id, u.invite_user_id, u.telegram_id,u.email
-		FROM v2_user u
-		JOIN cte ON u.invite_user_id = cte.id
-	  )
-	  SELECT id,invite_user_id,telegram_id,email FROM cte)aaa where invite_user_id is not null
-	  group by invite_user_id order by num desc;
+	//select count(1)as num,invite_user_id from (WITH RECURSIVE cte AS (
+	//	SELECT id, invite_user_id, telegram_id,email
+	//	FROM v2_user
+	//	WHERE telegram_id=%v
+	//	UNION ALL
+	//	SELECT u.id, u.invite_user_id, u.telegram_id,u.email
+	//	FROM v2_user u
+	//	JOIN cte ON u.invite_user_id = cte.id
+	//  )
+	// SELECT id,invite_user_id,telegram_id,email FROM cte)aaa where invite_user_id is not null
+	//  group by invite_user_id order by num desc;
+ 	SELECT COUNT(*) FROM v2_user WHERE invite_user_id = (SELECT id FROM v2_user WHERE telegram_id = %v)
 	`,telegramId)
 	DB.Raw(sql).Scan(&invites)
 	return invites

@@ -266,12 +266,12 @@ func s_invite(update tgbotapi.Update) {
 		_, _ = sendEditMessage(mm)
 		return
 	}
-	msg := ""
-	total := 0
+	//msg := ""
+	//total := 0
 	directNum := 0
-	if len(invites) > 1 {
-		msg += "其中我邀请的\n"
-	}
+	//if len(invites) > 1 {
+	//	msg += "其中我邀请的\n"
+	//}
 	//j :=3
 	//for k, v := range invites {
 	//	if k < j {
@@ -282,13 +282,14 @@ func s_invite(update tgbotapi.Update) {
 	//			msg += fmt.Sprintf("👉🏻`%s`邀请了%v人\n", u.Email, v.Num)
 	//		}
 	//	}
-	//	if v.InviteUserId == user.Id {
-	//		directNum = v.Num
-	//	}
-		total += v.Num
-	}
+		if v.InviteUserId == user.Id {
+			directNum = v.Num
+		}
+	//	total += v.Num
+	//}
 
-	fm := fmt.Sprintf("🧚🏻邀请信息:\n\n生态影响: %d人\n直接邀请: %d人\n间接邀请: %d人\n%v\n我的邀请链接:\n `%s`", total, directNum, total-directNum, msg, getInviteLink(user.Id))
+	//fm := fmt.Sprintf("🧚🏻邀请信息:\n\n生态影响: %d人\n直接邀请: %d人\n间接邀请: %d人\n%v\n我的邀请链接:\n `%s`", total, directNum, total-directNum, msg, getInviteLink(user.Id))
+	fm := fmt.Sprintf("🧚🏻邀请信息:\n直接邀请: %d人, directNum, getInviteLink(user.Id))
 	mm.Text = fm
 	mm.DisableWebPagePreview = false
 	btn1 := tgbotapi.NewInlineKeyboardButtonData("↩️返回主菜单", packBtnMsg(BACK, BACK))

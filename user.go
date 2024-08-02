@@ -272,19 +272,19 @@ func s_invite(update tgbotapi.Update) {
 	if len(invites) > 1 {
 		msg += "其中我邀请的\n"
 	}
-	j :=3
-	for k, v := range invites {
-		if k < j {
-			if  v.InviteUserId == user.Id{
-				j+=1
-			}else{
-				u := getUserById(v.InviteUserId)
-				msg += fmt.Sprintf("👉🏻`%s`邀请了%v人\n", u.Email, v.Num)
-			}
-		}
-		if v.InviteUserId == user.Id {
-			directNum = v.Num
-		}
+	//j :=3
+	//for k, v := range invites {
+	//	if k < j {
+	//		if  v.InviteUserId == user.Id{
+	//			j+=1
+	//		}else{
+	//			u := getUserById(v.InviteUserId)
+	//			msg += fmt.Sprintf("👉🏻`%s`邀请了%v人\n", u.Email, v.Num)
+	//		}
+	//	}
+	//	if v.InviteUserId == user.Id {
+	//		directNum = v.Num
+	//	}
 		total += v.Num
 	}
 

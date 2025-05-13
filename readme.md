@@ -25,9 +25,9 @@
 debug: false
 isAutoDeleteMsg: true #是否自动删除bot信息
 appName: XX加速器
-websiteUrl: https://board.jike212.xyz/
+websiteUrl: https://board.example.xyz/
 tgGroupLink: https://t.me/GanYaBotGroup
-inviteUrl: https://j12vpn2.net/?code= #邀请链接把邀请码去掉
+inviteUrl: https://example.net/?code= #邀请链接把邀请码去掉
 mysql:
   host: localhost
   port: 3306
